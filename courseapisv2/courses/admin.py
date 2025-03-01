@@ -44,13 +44,14 @@ class MyLessonAdmin(admin.ModelAdmin):
         }
 
 class MyAdminSite(admin.AdminSite):
-    site_header =  'OU eCourse Online'
+    site_header = 'OU eCourse Online'
 
     def get_urls(self):
         return [path('course-stats/', self.course_stats),] + super().get_urls()
 
     def course_stats(self, request):
-        stats = Category.objects.annotate(courses_count=Count('course__id')).values('id', 'name', 'course_count')
+        stats = Category.objects.annotate(course_count=Count('courses__id')).values('id', 'name', 'course_count')
+
         return TemplateResponse(request, 'admin/stats.html', {
             'stats': stats
         })
