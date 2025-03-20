@@ -4,7 +4,7 @@ from django.template.response import TemplateResponse
 from django.utils.safestring import mark_safe
 
 from courseapisv2.settings import TEMPLATES
-from courses.models import Category, Courses, Lesson, Tag
+from courses.models import Category, Courses, Lesson, Tag, Comment
 from django import forms
 from ckeditor_uploader.widgets import CKEditorUploadingWidget
 from django.urls import path
@@ -60,5 +60,6 @@ admin_site = MyAdminSite(name='eCourse')
 
 admin_site.register(Category)
 admin_site.register(Courses)
+admin_site.register(Comment)
 admin_site.register(Lesson, MyLessonAdmin)
 admin_site.register(Tag)
