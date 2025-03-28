@@ -44,7 +44,16 @@ INSTALLED_APPS = [
     'ckeditor_uploader',
     'rest_framework',
     'drf_yasg',
+    'oauth2_provider',
 ]
+
+OAUTH2_PROVIDER = { 'OAUTH2_BACKEND_CLASS': 'oauth2_provider.oauth2_backends.JSONOAuthLibCore' }
+
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+    'oauth2_provider.contrib.rest_framework.OAuth2Authentication',
+)
+}
 
 import cloudinary
 import cloudinary.uploader
@@ -98,7 +107,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'coursedb',
         'USER': 'root',
-        'PASSWORD': 'Admin@123',
+        'PASSWORD': 'root',
         'HOST': ''  # mặc định localhost
     }
 }
@@ -147,3 +156,7 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+CLIENT_ID = 'CM33YGsIsBDXodcPvjGxw5LGhy7cAKHZJEC2PVuS'
+CLIENT_SECRET = 'KNNEtNcknUfx74zLcuAW17fWxJNxb52MlXLUxv7UdY0vBOZhysDxyqiwHfvCGVFy90Ypahw9SbFXtfJmZkzAwviXGgzJ1wqQTyuyGbCx8miCsNl0kfbSm1gPSt1ojMuU'
+
